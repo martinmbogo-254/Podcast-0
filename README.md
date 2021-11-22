@@ -1,2 +1,2 @@
 # heroku
-a simple heroku deploymrnt trial
+a simple heroku deployment trial
