@@ -1,0 +1,81 @@
+body {
+    line-height: 2px;
+    margin: 0;
+    padding: 5px;
+    font-size: 20px;
+    line-height: 1.6em;
+    text-align: left;
+    font-family: 'roboto', sans-serif;
+}
+
+.bg-custom {
+    background-color: rgb(23, 124, 107);
+    opacity: .8;
+}
+
+.text-custom {
+    color: rgb(23, 124, 107);
+}
+
+html {
+    scroll-behavior: smooth;
+    transition-delay: 10s;
+}
+
+#hero-about {
+    border-radius: 10px;
+    line-height: 30px !important;
+}
+
+.btn-custom {
+    width: 150px;
+    text-decoration: none;
+    padding: 8px 25px;
+    border: none;
+    border-radius: 20px;
+    background: rgb(22, 177, 151);
+    color: white;
+}
+
+#profile {
+    /* background-image: rgba(0, 0, 0, 0.5) url(../images/SE002.jpg); */
+    padding: 10px;
+    margin-top: 100px;
+    margin-bottom: 50px;
+}
+
+#hero {
+    /* background-image: rgba(0, 0, 0, 0.5) url(../images/SE002.jpg); */
+}
+
+#hero-img {
+    margin: auto;
+    width: 100%;
+    display: block;
+}
+
+#skills {
+    padding: '';
+    height: auto;
+}
+
+#dets {
+    height: inherit;
+}
+
+#skills .row {
+    padding: 50px;
+}
+
+#languages {
+    border-radius: 10px;
+}
+
+#profile h4 {
+    font-weight: unset;
+}
+
+.footer {
+    height: 80px;
+    text-align: center;
+}
