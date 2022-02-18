@@ -1,0 +1,173 @@
+{% extends 'podcast/base.html' %}
+<!DOCTYPE html>
+<html lang="en">
+
+<body>
+    {% block content %}
+    <div class="row">
+        <div class="col-md-3">
+            <main>
+                <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse">
+                    <div class="position-sticky pt-3">
+                      <nav>
+                        <div class="d-flex flex-column flex-shrink-1 text-black  p-2 position-sticky collapse" id="sidebar" style="width: 280px;">
+                            <a href="/" class="d-flex align-items-center  mb-md-0 me-md-auto text-dark text-decoration-none">
+              
+                                <h4 class="fs-4 mt-3 m-2 p-2 text-center text-info">PODCAST</h4>
+                            </a>
+                          
+                            <ul class="nav nav-pills flex-column mb-auto text-dark p-3 m-1">
+                                <li class="nav-item">
+                                    <a href="index.html" class="nav-link  text-black" aria-current="page">
+                                        <i class="fa-solid fa-house"></i> Home
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="episodes.html" class="nav-link text-black"><i class="fa-solid fa-headphones-simple"></i> Explore
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#" class="nav-link text-black"><i class="fa-solid fa-fire-flame-curved"></i> Popular</a>
+                                </li>
+                                <li>
+                                    <a href="favorites.html" class="nav-link text-black"><i class="fa-brands fa-gratipay"></i> Favorites</a>
+                                </li>
+                                <li>
+                                    <a href="#" class="nav-link text-black"><i class="fa-solid fa-id-card-clip"></i> profile
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </nav>
+                    </main>
+        </div>
+  
+
+        <div class="col-md-8 mt-5 m-2 p-1">
+            <div class="text-justify m-2 p-1">
+
+
+            </div>
+            <div class="row">
+                <div class="col-md-7">
+                    <img src="images/waves.jpg" alt="" style="height:350px; width:500px; border-radius: 20px; ">
+                </div>
+                <div class="col-md-5 mt-5 ">
+                    <h5>EPISODE 1:HELLO WORLD</h5>
+                    <p>Descrition: Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellat molestiae nihil ea amet aut obcaecati, ipsam ratione officia corrupti odit.</p>
+                    <div class=" m-2 p-3">
+                        <audio src="C:\Users\Hp\Music\Avicii - Levels" controls></audio>
+                    </div>
+                    <div>
+                        <a href="profile.html" class="btn btn-dark"><i class="fa-brands fa-gratipay"></i> Add to favorites</a>
+                        <a href="" class="btn btn-outline-dark ml-2"><i class="fa-solid fa-share-from-square"></i> Share</a>
+                    </div>
+                    <h5 class="m-2 p-2">Rated: 4 <i class="fa-solid fa-star text-warning"></i></h5>
+                </div>
+            </div>
+            <div class="row m-3 p-3 comments">
+            </div>
+            <div class="container row m-2 p-1">
+                <div class="col-md-1"></div>
+                <div class="col-md-5">
+                    <form action="" class="form-group">
+                        <input type="text" class="form-control m-2 p-3" placeholder="Leave your comment ...">
+                    </form>
+                </div>
+                <div class="col-md-5"></div>
+            </div>
+            <div class="accordion mb-5 m-2 p-1" id="accordionExample">
+                <div class="accordion-item">
+                  <h2 class="accordion-header" id="headingOne">
+                    <div class=" panel panel-default" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                      <div class="row">
+                        <div class="col-md-10">
+                            <h5><i class="fa fa-comments" aria-hidden="true"></i> COMMENTS</h5>
+                          </div>
+                          <div class="col-md-2 col col-sm-1">
+                              
+                          </div>
+                      </div>
+                       
+                  </div>
+                  </h2>
+                  <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+                    <div class="accordion-body row">
+                        <div class="col-md-8">
+                            <div class="thread">
+                                <div class="m-3 rounded shadow ml-5 p-2">
+                                    <div class="row">
+                                        <div class="col-md-9">
+                                            <img src="images/podcast inspo.png" style="height: 50px; width: 50px; border-radius:50%;" alt="">
+                                        </div>
+                                        <div class="col-md-2">
+                                            <a class=" text-light btn btn-danger"  data-bs-toggle="modal" data-bs-target="#staticBackdrop">Delete</a>
+                                        </div>
+                                    </div>
+                                    <a class="text-teal nav-link" href="profile.html">
+                                        <h6>
+                                            @user_name
+                                        </h6>
+                                    </a>
+                                    <p>Hello there i love your show. keep doing whay youre doing comrades</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-3"></div>
+                        <div class="col-md-8">
+                            <div class="thread">
+                                <div class="m-3 rounded shadow ml-5 p-2">
+                                    <div class="row">
+                                        <div class="col-md-9">
+                                            <img src="images/podcast.png" style="height: 50px; width: 50px; border-radius:50%;" alt="">
+                                        </div>
+                                        <div class="col-md-2">
+                                            <a class=" text-light btn btn-danger"  data-bs-toggle="modal" data-bs-target="#staticBackdrop">Delete</a>
+                                        </div>
+                                    </div>
+                                    <a class="text-teal nav-link" href="profile.html">
+                                        <h6>
+                                            @user_name
+                                        </h6>
+                                    </a>
+                                    <p>Hello there i love your show. keep doing whay youre doing comrades</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-3"></div>
+                    </div>
+                  </div>
+                </div>
+                
+              </div>
+            <!-- Button trigger modal -->
+
+
+<!-- Modal -->
+<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+        <div class="card mt-5 mt-5 m-3 p-2 alert alert-danger" style="margin-top:300px;" id="delete">
+            <p>Are you sure you want to delete this comment ??..</p>
+            
+        </div>
+      <div class="modal-footer">
+        <div class="buttons">
+            <form action="">
+                <a href="index.html" class="btn btn-danger"> Yes, I'm sure</a>
+                <a href="episode.html" class="btn  btn-dark">Cancel</a>
+            </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+            
+           
+        </div>
+    </div>
+    </div>
+   {% endblock content%}
+</body>
+
+</html>
