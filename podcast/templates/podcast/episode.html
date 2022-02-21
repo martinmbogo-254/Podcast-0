@@ -5,7 +5,7 @@
 <body>
     {% block content %}
     <div class="row">
-        <div class="col-md-3">
+        <div class="col-md-2">
             <main>
                 <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse">
                     <div class="position-sticky pt-3">
@@ -18,16 +18,16 @@
                           
                             <ul class="nav nav-pills flex-column mb-auto text-dark p-3 m-1">
                                 <li class="nav-item">
-                                    <a href="index.html" class="nav-link  text-black" aria-current="page">
+                                    <a href="{% url 'home'%}" class="nav-link  text-black" aria-current="page">
                                         <i class="fa-solid fa-house"></i> Home
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="episodes.html" class="nav-link text-black"><i class="fa-solid fa-headphones-simple"></i> Explore
+                                    <a href="{% url 'episodes' %}" class="nav-link text-black"><i class="fa-solid fa-headphones-simple"></i> Explore
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="#" class="nav-link text-black"><i class="fa-solid fa-fire-flame-curved"></i> Popular</a>
+                                    <a href="/admin" class="nav-link text-black"><i class="fa-solid fa-fire-flame-curved"></i> Popular</a>
                                 </li>
                                 <li>
                                     <a href="favorites.html" class="nav-link text-black"><i class="fa-brands fa-gratipay"></i> Favorites</a>
@@ -50,11 +50,11 @@
             </div>
             <div class="row">
                 <div class="col-md-7">
-                    <img src="images/waves.jpg" alt="" style="height:350px; width:500px; border-radius: 20px; ">
+                    <img src="{{episode.thumbnail.url}}" alt="" style="height:350px; width:500px; border-radius: 20px; ">
                 </div>
                 <div class="col-md-5 mt-5 ">
-                    <h5>EPISODE 1:HELLO WORLD</h5>
-                    <p>Descrition: Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellat molestiae nihil ea amet aut obcaecati, ipsam ratione officia corrupti odit.</p>
+                    <h5>{{episode.title}}</h5>
+                    <p>{{ episode.desc}}</p>
                     <div class=" m-2 p-3">
                         <audio src="C:\Users\Hp\Music\Avicii - Levels" controls></audio>
                     </div>

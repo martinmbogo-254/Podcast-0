@@ -1,0 +1,89 @@
+{% extends 'podcast/base.html' %}
+<!DOCTYPE html>
+<html lang="en">
+
+<body>
+    {% block content %}
+    <div class="row">
+        <div class="col-md-2">
+            <main>
+                <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse">
+                    <div class="position-sticky pt-3">
+                        <nav>
+                            <div class="d-flex flex-column flex-shrink-1 text-black  p-2 position-sticky collapse"
+                                id="sidebar" style="width: 280px;">
+                                <a href="/"
+                                    class="d-flex align-items-center  mb-md-0 me-md-auto text-dark text-decoration-none">
+
+                                    <h4 class="fs-4 mt-3 m-2 p-2 text-center text-info">PODCAST</h4>
+                                </a>
+
+                                <ul class="nav nav-pills flex-column mb-auto text-dark p-3 m-1">
+                                    <li class="nav-item">
+                                        <a href="{% url 'home'%}" class="nav-link  text-black" aria-current="page">
+                                            <i class="fa-solid fa-house"></i> Home
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="{% url 'episodes'%}" class="nav-link text-black"><i
+                                                class="fa-solid fa-headphones-simple"></i> Explore
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="/admin" class="nav-link text-black"><i
+                                                class="fa-solid fa-fire-flame-curved"></i> Popular</a>
+                                    </li>
+                                    <li>
+                                        <a href="favorites.html" class="nav-link text-black"><i
+                                                class="fa-brands fa-gratipay"></i> Favorites</a>
+                                    </li>
+                                    <li>
+                                        <a href="#" class="nav-link text-black"><i class="fa-solid fa-id-card-clip"></i>
+                                            profile
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </nav>
+            </main>
+        </div>
+
+
+        <div class="col-md-9 mt-5   p-1">
+            <div class="row">
+                <div class="col-md-8">
+                    <div>
+                        <h4>All Episodes.</h4>
+                    </div>
+                    {% for episode in episodes %}
+                    
+                    <div class="row p-2 m-2">
+                        <div class="col-md-3">
+                            <img src="{{ episode.thumbnail.url }}" style=" height: 120px;
+                            width: 120px;
+                            border-radius: 20px;
+                            margin-left:5px;" alt="">
+                        </div>
+                        <div class="col-md-9">
+                            <a class="nav-link  " href="{% url 'detail' episode.id %}">
+                                <h6>{{episode.title}}</h6>
+                            </a>
+                            <p class="ml-4">Hello there and welcome to our very fir.....</p>
+                            <p class="ml-4"><small>Posted: 10 mins ago</small></p>
+                        </div>
+                    </div>
+                    <hr class="fw-bold">
+                    {% endfor %}
+                </div>
+                <div class="col-md-4">
+                    <h4>About</h4>
+<p class="p-2 m-2">The all talk podcast. We talk on the things that are hardly talked about.</p>
+                </div>
+            </div>
+           
+        </div>
+    </div>
+    {% endblock content%}
+</body>
+
+</html>

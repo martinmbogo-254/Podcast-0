@@ -6,7 +6,7 @@
 
 <body>
     <div class="row">
-        <div class="col-md-3">
+        <div class="col-md-2">
             <main>
                 <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse">
                     <div class="position-sticky pt-3">
@@ -24,7 +24,7 @@
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="episodes.html" class="nav-link text-black"><i class="fa-solid fa-headphones-simple"></i> Explore
+                                    <a href="{% url 'episodes' %}" class="nav-link text-black"><i class="fa-solid fa-headphones-simple"></i> Explore
                                     </a>
                                 </li>
                                 <li>
@@ -42,20 +42,20 @@
                     </nav>
                     </main>
         </div>
-        <div class="col-md-8 mt-3 m-2">
-            <div class="row mt-2 m-3 p-2">
+        <div class="col-md-9 mt-3 m-2">
+            <div class="row mt-2 m-3">
             <div class="col-md-5">
                 <h4>THE ALL TALK SHOW.</h4>
             </div>
             <div class="col-md-5">
                 <form class="d-flex" method="GET">
-                    <input class="form-control me-2" type="search" name="q" placeholder="Search episodes here..." aria-label="Search">
+                    <input class="form-control me-2" type="text" name="q" placeholder="Search episodes here..." aria-label="Search">
                     <button class="btn btn-outline-success search ml-2" type="submit"><i class="fa-solid fa-magnifying-glass"></i> </button>
                 </form>
             </div>
         </div>
-        <div class="row mt-4">
-            <div class="col-md-7 mt-2">
+        <div class="row bg-light mt-4">
+            <div class="col-md-9 mt-2">
                 <div class="episodes shadow rounded rounded bg- p-2">
                     <h5 class="m-3 p-2 text-info">Recent Episodes</h5>
                     {% for episode in episodes %}
@@ -91,19 +91,19 @@
                     </div>
                 </div>
             </div>
-            <div class="col-md-5 mt-2 bg-light rounded-top">
+            <div class="col-md-3 mt-2 p-2 rounded-top">
                 <h4 class=" text-info p-3">Categories</h4>
-                <div class="row text-center categories">
+                <div class="row text-center categories d-flex justify-content-between">
                     {% for category in categories%}
                     <div class="col-md-6">
                         <p>{{category.name}}</p>
-                        <img class="rounded" src="{{category.thumbnail.url}}" style="height:90px; width: 150px;" alt="img">
+                        <img class="rounded" src="{{category.thumbnail.url}}" style="height:90px; width: 100px;" alt="img">
                     </div>
                    {%endfor%}
                 </div>
             </div>
         </div>
-        </div>
+    
         
     </div>
 </body>

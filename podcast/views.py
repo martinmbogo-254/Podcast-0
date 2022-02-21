@@ -6,14 +6,19 @@ def home(request):
     q = request.GET.get('q') if request.GET.get('q') !=None else ''
     episodes = Episode.objects.filter(title__icontains=q)
     categories= Category.objects.all()
-    episodes = Episode.objects.all()
+    # episodes = Episode.objects.all()
     context={
         'categories': categories,
         'episodes': episodes,
     }
     return render(request, 'podcast/home.html', context)
 
-
+def explore(request):
+    episodes = Episode.objects.all()
+    context={
+        'episodes': episodes
+    }
+    return render(request,'podcast/explore.html',context)
 
 def EpisodeDetail(request, pk):
     episode = Episode.objects.get(id=pk)
