@@ -1,0 +1,34 @@
+{% extends 'podcast/base.html' %}
+<html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Login</title>
+</head>
+
+<body>
+    {% block content %}
+    <div class="container container text-center">
+        <div class="card p-3 ">
+            <h3>Login</h3>
+            <form action="" method="POST">
+                {% csrf_token %} {{ form.as_p }}
+                <div>
+                    <button class="btn btn-outline-success" type="submit">Login</button>
+                </div>
+            </form>
+            <div>
+                Don't have an account? <a href="/register">Register Now</a>
+            </div>
+            <div>
+                <a href="/password-reset">Forgot password?</a>
+            </div>
+
+        </div>
+
+    </div>
+    {% endblock content %}
+</body>
+
+</html>

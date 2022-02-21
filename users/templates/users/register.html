@@ -1,0 +1,29 @@
+{% extends 'podcast/base.html'%} {% load crispy_forms_tags %}
+
+<html>
+{% block content%}
+
+<div class="container text-center row">
+    <div class="col-md-3"></div>
+    <div class="col-md-7 m-2">
+        <div class="card p-3">
+            <h4 class="m-3">REGISTER</h4>
+            <form action="" method="POST">
+                {% csrf_token %} {{ form|crispy }}
+                <div>
+                    <button class="btn btn-outline-success" type="submit">signup</button>
+                </div>
+            </form>
+            <div>
+                Already have an account? <a href="/login">login</a>
+            </div>
+            <div class="mt-5">
+                <small> By signing up to Smart Movers, you agree to our <a href="">terms and conditions</a> </small>
+            </div>
+        </div>
+    </div>
+</div>
+
+{%endblock content%}
+
+</html>

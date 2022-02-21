@@ -73,7 +73,29 @@
                         </div>
                     </div>
                     <hr class="fw-bold">
-                    {% endfor %}
+                                {% endfor %}
+                                
+            <div class= "d-flex justify-content-center text-center pagination">
+            
+                {% if episodes.has_other_pages %}
+                <ul class="pagination">
+                    {% if episodes.has_previous %}
+                    <li><a class="btn btn-info m-1 " href="?page={{ episodes.previous_page_number }}">&laquo;</a></li>
+                    {% else %}
+                    <li class=" disabled btn btn-outline-info m-1"><span>&laquo;</span></li>
+                    {% endif %} {% for i in episodes.paginator.page_range %} {% if episodes.number == i %}
+                    <li class=" disabled btn btn-outline-info m-1" class="active"><span>{{ i }} <span class="sr-only">(current)</span></span>
+                    </li>
+                    {% else %}
+                    <li><a href="?page={{ i }}" class="btn btn-info m-1">{{ i }}</a></li>
+                    {% endif %} {% endfor %} {% if episodes.has_next %}
+                    <li><a class="btn btn-info m-1" href="?page={{ episodes.next_page_number }}">&raquo;</a></li>
+                    {% else %}
+                    <li class=" disabled btn btn-outline-info m-1"><span>&raquo;</span></li>
+                    {% endif %}
+                </ul>
+                {% endif%}
+            </div>
                 </div>
                 <div class="col-md-4">
                     <h4>About</h4>

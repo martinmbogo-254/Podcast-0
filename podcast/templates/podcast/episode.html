@@ -62,28 +62,26 @@
                         <a href="profile.html" class="btn btn-dark"><i class="fa-brands fa-gratipay"></i> Add to favorites</a>
                         <a href="" class="btn btn-outline-dark ml-2"><i class="fa-solid fa-share-from-square"></i> Share</a>
                     </div>
-                    <h5 class="m-2 p-2">Rated: 4 <i class="fa-solid fa-star text-warning"></i></h5>
+                    <div class="p-2 m-2 row">
+                        <div class="col-md-4"><h5>Rated:</h5></div>
+                        <div class="col-md-4" style="margin-left: -25px;"> {{average_ratings.rate__avg|floatformat}}/5  <i class="fa-solid fa-star text-warning"></i></div>
+                        <div class="col-md-2"></div>
+                        <br>
+                    </div>
                 </div>
             </div>
             <div class="row m-3 p-3 comments">
             </div>
-            <div class="container row m-2 p-1">
-                <div class="col-md-1"></div>
-                <div class="col-md-5">
-                    <form action="" class="form-group">
-                        <input type="text" class="form-control m-2 p-3" placeholder="Leave your comment ...">
-                    </form>
-                </div>
-                <div class="col-md-5"></div>
-            </div>
+          
             <div class="accordion mb-5 m-2 p-1" id="accordionExample">
                 <div class="accordion-item">
                   <h2 class="accordion-header" id="headingOne">
                     <div class=" panel panel-default" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
                       <div class="row">
-                        <div class="col-md-10">
-                            <h5><i class="fa fa-comments" aria-hidden="true"></i> COMMENTS</h5>
-                          </div>
+                        <div class="col-md-10 ml-5">
+                            <h5  data-toggle="tooltip" data-placement="bottom" title="click to open & close comments."><i class="fa fa-comments"  aria-hidden="true"></i> COMMENTS</h5>
+      
+                        </div>
                           <div class="col-md-2 col col-sm-1">
                               
                           </div>
@@ -93,48 +91,42 @@
                   </h2>
                   <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
                     <div class="accordion-body row">
-                        <div class="col-md-8">
-                            <div class="thread">
-                                <div class="m-3 rounded shadow ml-5 p-2">
-                                    <div class="row">
-                                        <div class="col-md-9">
-                                            <img src="images/podcast inspo.png" style="height: 50px; width: 50px; border-radius:50%;" alt="">
-                                        </div>
-                                        <div class="col-md-2">
-                                            <a class=" text-light btn btn-danger"  data-bs-toggle="modal" data-bs-target="#staticBackdrop">Delete</a>
-                                        </div>
-                                    </div>
-                                    <a class="text-teal nav-link" href="profile.html">
-                                        <h6>
-                                            @user_name
-                                        </h6>
-                                    </a>
-                                    <p>Hello there i love your show. keep doing whay youre doing comrades</p>
-                                </div>
+                        <div class=" bg-white col-md-10 shadow-lg rounded jumbotron p-2 container-fluid feedback ">
+                            <h5 class="text-center m-3 p-2"> Feedback about <a class="text-teal" style="color: teal; text-decoration: none;" href="">{{episode.title}}</a></h5>
+                            <a href=" {% url 'rate' episode.id%}" class="btn btn-info p-2 m-2 text-center" data-toggle="tooltip" data-placement="top" title="leave your comments & rating.">
+                                Leave feedback
+                            </a>
+                            <div class="p-2 m-2">
+                                <p>Rated: {{average_ratings.rate__avg|floatformat}}/5</p>
+                                <p>{{total_ratings}} Reviews</p>
                             </div>
+                            {% for rating in episode.rating.all reversed%}
+                            <div class="row ml-2">
+                                <div class="container m-2 ml-3 p-2   col-md-8 mr-2 rounded bg-light shadow text-dark">
+                                    <p>
+                                        <span>
+                                     <img class="rounded-circle profile-pic " style="width: 30px;height:30px;" src="{{ rating.user.profile.image.url}} " alt=" ">
+                                 </span>
+                                        <span class=font-weight-bold>
+                                 {{rating.user}} </span>
+                                        <span class="ml-5"><i class="fa fa-comments" aria-hidden="true"></i>
+                                        </span>
+                                        <div class=" container text-justify ">
+                                            {{rating.comment|title}} <br>Rated : {{rating.rate}}/5  <i class="fa-solid fa-star text-warning"></i>
+                                        </div>
+                                    </p>
+                                </div>
+                                <div class="col-md-2"></div>
+                            </div>
+                            {% empty%}
+                            <div class="text-center m-2 p-2">
+                                <p>No ratings for this Mover's page Yet !!!.</p>
+                    
+                            </div>
+                            {% endfor%}
                         </div>
                         <div class="col-md-3"></div>
-                        <div class="col-md-8">
-                            <div class="thread">
-                                <div class="m-3 rounded shadow ml-5 p-2">
-                                    <div class="row">
-                                        <div class="col-md-9">
-                                            <img src="images/podcast.png" style="height: 50px; width: 50px; border-radius:50%;" alt="">
-                                        </div>
-                                        <div class="col-md-2">
-                                            <a class=" text-light btn btn-danger"  data-bs-toggle="modal" data-bs-target="#staticBackdrop">Delete</a>
-                                        </div>
-                                    </div>
-                                    <a class="text-teal nav-link" href="profile.html">
-                                        <h6>
-                                            @user_name
-                                        </h6>
-                                    </a>
-                                    <p>Hello there i love your show. keep doing whay youre doing comrades</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-3"></div>
+                       
                     </div>
                   </div>
                 </div>

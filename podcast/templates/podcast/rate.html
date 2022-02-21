@@ -1,0 +1,79 @@
+{% extends 'podcast/base.html' %}
+{% load crispy_forms_tags %}
+<!DOCTYPE html>
+<html lang="en">
+
+<body>
+    {% block content %}
+    <div class="row">
+        <div class="col-md-2">
+            <main>
+                <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse">
+                    <div class="position-sticky pt-3">
+                      <nav>
+                        <div class="d-flex flex-column flex-shrink-1 text-black  p-2 position-sticky collapse" id="sidebar" style="width: 280px;">
+                            <a href="/" class="d-flex align-items-center  mb-md-0 me-md-auto text-dark text-decoration-none">
+              
+                                <h4 class="fs-4 mt-3 m-2 p-2 text-center text-info">PODCAST</h4>
+                            </a>
+                          
+                            <ul class="nav nav-pills flex-column mb-auto text-dark p-3 m-1">
+                                <li class="nav-item">
+                                    <a href="{% url 'home'%}" class="nav-link  text-black" aria-current="page">
+                                        <i class="fa-solid fa-house"></i> Home
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="{% url 'episodes' %}" class="nav-link text-black"><i class="fa-solid fa-headphones-simple"></i> Explore
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="/admin" class="nav-link text-black"><i class="fa-solid fa-fire-flame-curved"></i> Popular</a>
+                                </li>
+                                <li>
+                                    <a href="favorites.html" class="nav-link text-black"><i class="fa-brands fa-gratipay"></i> Favorites</a>
+                                </li>
+                                <li>
+                                    <a href="#" class="nav-link text-black"><i class="fa-solid fa-id-card-clip"></i> profile
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </nav>
+                    </main>
+        </div>
+  <div class="col-md-8 mt-4 p-3 m-3">
+      <h5 class="fw-bold text-center">Rating page</h5>
+      <div class="jumbotron-fluid jumbotron rounded shadow">
+       
+            <a class="btn btn-dark m-2 ml-5" href="{% url 'detail' episode.id %}">Back</a>
+       
+        <div class="row">
+            <div class="col-md-6 container">
+                <img class="rounded" src="{{episode.thumbnail.url}}" style="height:320px" width="100%" alt="">
+            </div>
+            <div class="col-md-5 container-fluid">
+                <div class="card text-center p-2 bg-light rounded shadow m-3">
+               
+                <div class="text-justify p-2 m-2 rounded m-3">
+                    <form method="POST">
+                        {% csrf_token%}
+                        <div class="input-field">
+                            {{form.comment|as_crispy_field}}
+                        </div>
+                        <div class="input-field">
+                            {{form.rate|as_crispy_field}}
+                        </div>
+                        <button type="submit" class="btn text-center btn-info m-3">save</button>
+                    </form>
+                </div>
+      </div>
+  </div>
+
+     
+    </div>
+    </div>
+   {% endblock content%}
+</body>
+
+</html>

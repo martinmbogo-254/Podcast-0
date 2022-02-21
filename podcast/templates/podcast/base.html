@@ -17,11 +17,20 @@
 </head>
        
 <header class="navbar navbar-dark sticky-top p-2 bg-dark text-light flex-md-nowrap p-0 shadow">
-    <a class="navbar-brand text-center ml-5 text-center" href="#"> <i class="fa-solid fa-headphones-simple " style="font-size: 20px;"></i>  SHE-HUDRAY PODCAST</a>
+    <a class="navbar-brand text-center ml-5 text-center" href="{% url 'home'%}"> <i class="fa-solid fa-headphones-simple " style="font-size: 20px;"></i>  SHE-HUDRAY PODCAST</a>
     <button class="navbar-toggler position-absolute d-md-none collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
+    <div class="">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link" href="/login">Login</a>
+        </li>
+      
+      </ul>
+
     
+    </div>
   </header>
   <body>
       <div class="container-fluid">
