@@ -29,6 +29,8 @@ class Episode(models.Model):
     title = models.CharField(max_length=100)
     desc = models.TextField()
     thumbnail = models.FileField(upload_to='episodes/', default='episodes/default.png')
+    favorite = models.ManyToManyField(User,blank=True, related_name='favorite')
+
     posted = models.DateTimeField( auto_now_add=True,null=True)
     # audio
      
@@ -38,7 +40,8 @@ class Episode(models.Model):
     def desc_snippet(self):
         return self.desc[:60]
 
-
+    class Meta:
+        ordering = ['-posted']
 
 RATE_CHOICES =[
             (1,'1-Very Dissatisfied'),

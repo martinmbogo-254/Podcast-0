@@ -43,12 +43,16 @@ def EpisodeDetail(request, pk):
     episode = Episode.objects.get(id=pk)
     ratings = Rating.objects.filter(episode=episode)
     average_ratings = ratings.aggregate(Avg('rate'))
+    fav = bool
+    if episode.favorite.filter(id=request.user.id).exists():
+        fav = True
     total_ratings = ratings.count()
     context = {
         'episode': episode,
         'average_ratings': average_ratings,
         'ratings': ratings,
         'total_ratings': total_ratings,
+        'fav':fav,
     }
     return render(request, 'podcast/episode.html', context)
 
@@ -57,6 +61,7 @@ def Rate(request, pk):
     # getting post objects by their id
     episode = Episode.objects.get(id=pk)
     user = request.user
+   
     # form method
     if request.method == 'POST':
         form = RateForm(request.POST)
@@ -72,5 +77,27 @@ def Rate(request, pk):
     context = {
         'form': form,
         'episode': episode,
+       
     }
     return render(request, 'podcast/rate.html', context)
+
+
+def favorites(request):
+    user = request.user
+    favorites= Episode.objects.filter(favorite=user)
+
+    context={
+        'favorites':favorites
+    }
+    return render(request,'podcast/favorites.html',context)
+
+
+
+def addToFavorites(request,pk):
+    episode = Episode.objects.get(id=pk)
+    if episode.favorite.filter(id=request.user.id).exists():
+        episode.favorite.remove(request.user)
+    else:
+        episode.favorite.add(request.user)
+    return HttpResponseRedirect(request.META['HTTP_REFERER'])
+    

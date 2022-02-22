@@ -6,5 +6,8 @@ urlpatterns = [
     path('Episodes',views.explore, name='episodes' ),
     path('Episode/<int:pk>/',views.EpisodeDetail, name='detail' ),
     path('Episode/<int:pk>/rate',views.Rate, name='rate' ),
+    path('episode/<int:pk>/addtofavs',views.addToFavorites, name="addtofavorites"),
+    path('favorites/',views.favorites, name="favorites"),
+
 
 ]

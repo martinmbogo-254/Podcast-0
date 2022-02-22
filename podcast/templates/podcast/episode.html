@@ -30,7 +30,7 @@
                                     <a href="/admin" class="nav-link text-black"><i class="fa-solid fa-fire-flame-curved"></i> Popular</a>
                                 </li>
                                 <li>
-                                    <a href="favorites.html" class="nav-link text-black"><i class="fa-brands fa-gratipay"></i> Favorites</a>
+                                    <a href="{% url 'favorites' %}" class="nav-link text-black"><i class="fa-brands fa-gratipay"></i> Favorites</a>
                                 </li>
                                 <li>
                                     <a href="#" class="nav-link text-black"><i class="fa-solid fa-id-card-clip"></i> profile
@@ -59,7 +59,11 @@
                         <audio src="C:\Users\Hp\Music\Avicii - Levels" controls></audio>
                     </div>
                     <div>
-                        <a href="profile.html" class="btn btn-dark"><i class="fa-brands fa-gratipay"></i> Add to favorites</a>
+                        {% if fav %}
+            <a href="{% url 'favorites'%}" class="btn btn-danger"><i class="fa-solid fa-xmark"></i> Remove from favs</a> {% else %}
+            <a href="{% url 'addtofavorites' episode.id %}" class="btn btn-dark"><i class="fa-brands fa-gratipay"></i> Add to favorites {% endif %}
+
+                       
                         <a href="" class="btn btn-outline-dark ml-2"><i class="fa-solid fa-share-from-square"></i> Share</a>
                     </div>
                     <div class="p-2 m-2 row">
