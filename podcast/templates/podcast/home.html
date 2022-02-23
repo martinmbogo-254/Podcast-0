@@ -45,42 +45,33 @@
         <div class="col-md-9 mt-3 m-2">
             <div class="row mt-2 m-3">
             <div class="col-md-5">
-                <h4>THE ALL TALK SHOW.</h4>
+                <h4 class="text-center">THE ALL TALK SHOW.</h4>
             </div>
-            <div class="col-md-5">
-                <form class="d-flex" method="GET">
-                    <input class="form-control me-2" type="text" name="q" placeholder="Search episodes here..." aria-label="Search">
-                    <button class="btn btn-outline-success search ml-2" type="submit"><i class="fa-solid fa-magnifying-glass"></i> </button>
-                </form>
-            </div>
+           
         </div>
         <div class="row bg-light mt-4">
             <div class="col-md-9 mt-2">
                 <div class="episodes shadow rounded rounded bg- p-2">
                     <h5 class="m-3 p-2 text-info">Recent Episodes</h5>
-                    {% for episode in episodes %}
+                    {% for recent_episode in recent_episodes %}
 
                     <div class="row">
                         <div class="col-md-3">
-                            <img class="rounded" src="{{episode.thumbnail.url}}"  alt="img">
+                            <img class="rounded" src="{{recent_episode.thumbnail.url}}"  alt="img">
                         </div>
                         <div class="col-md-7 ">
-                            <a class="nav-link " href="{%url 'detail' episode.id %}">
-                                <h6>{{episode.title}}</h6>
+                            <a class="nav-link " href="{%url 'detail' recent_episode.id %}">
+                                <h6>{{recent_episode.title}}</h6>
                             </a>
-                            <p class="ml-3">{{episode.desc_snippet}}...</p>
-                            <p class="ml-4"><small>Posted: {{episode.posted|timesince}} ago</small></p>
+                            <p class="ml-3">{{recent_episode.desc_snippet}}...</p>
+                            <p class="ml-4"><small>Posted: {{recent_episode.posted|timesince}} ago</small></p>
                         </div>
 
                     </div>
                     <hr>
                     {% endfor %}
 
-                    <div class="row  container m-3">
-                        <a href="" class="btn btn-info mr-2">prev</a>
-                        <a href="" class="btn btn-outline-info mr-2">2</a>
-                        <a href="" class="btn btn-info mr-2">next</a>
-                    </div>
+                  
                 </div>
                 <div class="row">
                     <div class="col-md-5">

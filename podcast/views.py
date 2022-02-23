@@ -9,18 +9,18 @@ from .forms import RateForm
 
 # Create your views here.
 def home(request):
-    q = request.GET.get('q') if request.GET.get('q') !=None else ''
-    episodes = Episode.objects.filter(title__icontains=q)
+    recent_episodes = Episode.objects.filter().order_by('-posted')[:3]
     categories= Category.objects.all()
-    # episodes = Episode.objects.all()
     context={
         'categories': categories,
-        'episodes': episodes,
+        'recent_episodes':recent_episodes
     }
     return render(request, 'podcast/home.html', context)
 
 def explore(request):
-    episodes = Episode.objects.all()
+    
+    q = request.GET.get('q') if request.GET.get('q') !=None else ''
+    episodes = Episode.objects.filter(title__icontains=q)
     page = request.GET.get('page', 1)
 
     paginator = Paginator(episodes, 4)
@@ -85,9 +85,10 @@ def Rate(request, pk):
 def favorites(request):
     user = request.user
     favorites= Episode.objects.filter(favorite=user)
-
+    fav_episodes = Episode.objects.filter(favorite=user).count()
     context={
-        'favorites':favorites
+        'favorites':favorites,
+        'fav_episodes': fav_episodes
     }
     return render(request,'podcast/favorites.html',context)
 

@@ -50,10 +50,23 @@
 
 
         <div class="col-md-9 mt-5   p-1">
+            <div class="row mt-2 m-3">
+                <div class="col-md-5">
+                    <h4>All Episodes.</h4>
+                </div>
+                <div class="col-md-5">
+                    <form class="d-flex" method="GET">
+                        <input class="form-control me-2" type="text" name="q" placeholder="Search episodes here..." aria-label="Search">
+                        <button class="btn btn-outline-success search ml-2" type="submit"><i class="fa-solid fa-magnifying-glass"></i> </button>
+                    </form>
+                </div>
+            </div>
             <div class="row">
+                
                 <div class="col-md-8">
+                   
                     <div>
-                        <h4>All Episodes.</h4>
+                       
                     </div>
                     {% for episode in episodes %}
                     

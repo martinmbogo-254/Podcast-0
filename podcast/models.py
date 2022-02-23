@@ -30,7 +30,7 @@ class Episode(models.Model):
     desc = models.TextField()
     thumbnail = models.FileField(upload_to='episodes/', default='episodes/default.png')
     favorite = models.ManyToManyField(User,blank=True, related_name='favorite')
-
+    audio = models.FileField(blank=True, null=True)
     posted = models.DateTimeField( auto_now_add=True,null=True)
     # audio
      
@@ -39,6 +39,9 @@ class Episode(models.Model):
 
     def desc_snippet(self):
         return self.desc[:60]
+
+    def title_snippet(self):
+        return self.title[:20]
 
     class Meta:
         ordering = ['-posted']
