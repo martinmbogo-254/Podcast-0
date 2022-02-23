@@ -47,28 +47,16 @@
     
         <a href="{% url 'home'%}" class="btn btn-dark m-3">add favs</a> 
         <div class="row">
-            {% for episode in favorites %}
-
-            <div class="col-md-4">
-                <h4>
-                    {{episode.request.user}}
-                </h4>
-                <p>{{ favorite.name}}</p>
-            
-                <p>{{ episode.title}}</p>
-                <p>{{ episode.created}}</p>
-                <img src="{{episode.thumbnail.url}}" alt="thumbnail" style="height:200px; width:200px; border-radius: 20px;">
-                <a href="{% url 'addtofavorites' episode.id %}" class="btn btn-danger m-2  ">Remove from favs</a> 
-                {% empty%}
-                <div class="alert alert-danger m-3 p-2 container">
-                    <p>No favorite episodes found...</p>
+        {% for episode in favorites %}
+            <div class="col-md-3">
+             
+                <div class="">
+                    <img src="{{ episode.thumbnail.url }}" style="height:150px; width:200px; border-radius: 20px;" >
                 </div>
+                <p>{{episode.title}}</p>
             </div>
-          {% endfor %}
+        {% endfor %}
         </div>
       </div>
-        
-   
-    
 </div>
 {% endblock %}
