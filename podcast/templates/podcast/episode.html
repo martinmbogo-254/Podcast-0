@@ -1,4 +1,4 @@
-{% extends 'podcast/base.html' %}
+{% extends 'podcast/base.html' %}{% load social_share %}
 <!DOCTYPE html>
 <html lang="en">
 
@@ -56,14 +56,22 @@
                     <h5>{{episode.title}}</h5>
                     <p>{{ episode.desc}}</p>
                     <div class=" m-2 p-3">
-                        <audio src="C:\Users\Hp\Music\Avicii - Levels" controls></audio>
+                        <audio controls src="{{episode.audio.url}}"></audio>
                     </div>
                     <div>
                         {% if fav %}
             <a href="{% url 'favorites'%}" class="btn btn-danger"><i class="fa-solid fa-xmark"></i> Remove from favs</a> {% else %}
             <a href="{% url 'addtofavorites' episode.id %}" class="btn btn-dark"><i class="fa-brands fa-gratipay"></i> Add to favorites {% endif %}
 
-                       
+                <!-- <div class="card text-justify p-2 m-2 rounded shadow m-3">
+                    <p>Share this contact on social media</p>
+                    <button class="btn btn-outline-success m-1 nav-link text-light">
+                        {% post_to_whatsapp object_or_url " Whatsapp" %}
+                    </button>
+                    <button class="btn btn-outline-info m-1 nav-link text-light">
+                        {% post_to_facebook object_or_url "Share To Facebook" %}
+                    </button>
+                </div> -->
                         <a href="" class="btn btn-outline-dark ml-2"><i class="fa-solid fa-share-from-square"></i> Share</a>
                     </div>
                     <div class="p-2 m-2 row">

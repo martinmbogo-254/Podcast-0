@@ -5,6 +5,7 @@ from .models import Category, Episode, Rating
 from django.urls import reverse
 from django.http.response import HttpResponseRedirect
 from .forms import RateForm
+from django.contrib.auth.decorators import login_required
 
 
 # Create your views here.
@@ -56,7 +57,7 @@ def EpisodeDetail(request, pk):
     }
     return render(request, 'podcast/episode.html', context)
 
-
+@login_required
 def Rate(request, pk):
     # getting post objects by their id
     episode = Episode.objects.get(id=pk)
@@ -81,6 +82,7 @@ def Rate(request, pk):
     }
     return render(request, 'podcast/rate.html', context)
 
+@login_required
 
 def favorites(request):
     user = request.user
@@ -93,6 +95,7 @@ def favorites(request):
     return render(request,'podcast/favorites.html',context)
 
 
+@login_required
 
 def addToFavorites(request,pk):
     episode = Episode.objects.get(id=pk)

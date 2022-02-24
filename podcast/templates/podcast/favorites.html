@@ -40,14 +40,25 @@
                             </ul>
                         </div>
                     </nav>
+                </div>
+                </nav>
         </main>
     </div>
 
     <div class="col-md-9 m-2 mt-5">
-    <div class="title">
-        <h2>Your Episodes</h2>
+    <div class="title row">
+        <div class="col-md-4" style="justify-content: flex-end; margin-right: -20px;">
+            <div class="img text-center">
+                {% load static %}
+                <img src="{% static 'podcast/microphone.jpg' %}" alt="My image" style="height: 200px; width: 180px; border-radius: 20px; " >
+            </div>
+        </div>
+     <div class="col-md-4 mt-3">
+        <h2 class="text-info">Your Episodes</h2>
         <h6 class="fw-bold m-2 p-2">{{request.user|upper}}</h6>
          <p class="m-2 p-1">{{fav_episodes}} Favorite Episodes</p>
+     </div>
+       
     </div>
         <a href="{% url 'episodes'%}" class="btn btn-dark m-3">add more favorites</a> 
         <div class="row">
@@ -58,7 +69,11 @@
                     <img src="{{ episode.thumbnail.url }}" style="height:150px; width:200px; border-radius: 20px;" >
                 </div>
                 <p> <a class="nav-link" href="{% url 'detail' episode.id %}">{{ episode.title_snippet}} ...</a></p>
-                <a href="{% url 'addtofavorites' episode.id %}" class="btn btn-danger">Remove</a>
+                <a href="{% url 'addtofavorites' episode.id %}" class="m-2 ml-5 p-2 btn btn-danger text-center"><i class="fa-solid fa-xmark"></i></a>
+            </div>
+            {% empty %}
+            <div class="alert alert-danger m-3  ml-5 mr-5 p-2 container text-center">
+                <p>Sorry !! You currently have no episodes in your favorites...</p>
             </div>
         {% endfor %}
         </div>
