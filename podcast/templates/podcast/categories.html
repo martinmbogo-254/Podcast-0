@@ -1,0 +1,19 @@
+{% extends 'podcast/base.html'%}
+<!DOCTYPE html>
+
+<html>{% load static%} 
+{% block content%}
+<body>
+    <div class="row">
+        <div class="col-md-2">
+            {% include 'podcast/sidebar.html' %}
+        </div>
+        <div class="col-md-8">
+            <h5>Categories page</h5>
+            {% for category in categories %}
+            <p>{{category.name}}</p>
+            {% endfor %}
+        </div>
+    </div>
+</body>
+{% endblock content %}

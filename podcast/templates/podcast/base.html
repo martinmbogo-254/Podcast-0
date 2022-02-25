@@ -3,11 +3,11 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="shortcut icon" href="{% static 'podcast/favicon.ico' %}" type="image/x-icon" />
 
     <title>SHE-HUDRAY PODCAST</title>
     
     <link rel="stylesheet" href="{% static 'podcast/styles.css' %} ">
-    <link rel="stylesheet" href="{% static 'pocast/sidebars.css' %}">
     <link rel="stylesheet" href="{% static 'podcast/dashboard.css' %}">
     <link rel="stylesheet" href="{% static 'podcast/bootstrap.min.css' %}">
     <link rel="canonical" href="https://getbootstrap.com/docs/5.1/examples/dashboard/">
@@ -16,21 +16,29 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 
 </head>
-       
-<header class="navbar navbar-dark sticky-top p-2 bg-dark text-light flex-md-nowrap p-0 shadow">
+
+<header class="navbar navbar-dark sticky-top p-2 bg-black text-light flex-md-nowrap p-0 shadow">
     <a class="navbar-brand text-center ml-5 text-center" href="{% url 'home'%}"> <i class="fa-solid fa-headphones-simple " style="font-size: 20px;"></i>  SHE-HUDRAY PODCAST</a>
     <button class="navbar-toggler position-absolute d-md-none collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="">
       <ul class="navbar-nav">
-        <li class="nav-item">
-          <a class="nav-link" href="/login">Login</a>
-        </li>
-      
+          {% if user.is_authenticated %}
+          <div class="row text-center">
+              <div class="col-md-4">   <a class="nav-link" href="/profile ">{{user.username|upper}}</a></div>
+              <div class="col-md-4 ml-2 mr-1"><a class="nav-link " href="/logout ">LOGOUT</a></div>
+          </div>
+
+          {%else %}
+          <div class="navbar-nav ">
+              <a class="nav-link ml-auto " href="{% url 'login' %} ">Login</a>
+              <a class="nav-link ml-auto " href="/register ">Register</a>
+              {% endif %}
+
       </ul>
 
-    
+    </div>
     </div>
   </header>
   <body>

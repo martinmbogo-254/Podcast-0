@@ -10,11 +10,14 @@
 <body>
     {% block content %}
     <div class="row">
-        <div class="col-md-3"></div>
-        <div class="col-md-6">
+        <div class="col-md-2">
+            {% include 'podcast/sidebar.html' %}
+
+        </div>
+        <div class="col-md-8 mt-4">
             <div class="container card jumbotron text-center">
                 <div>
-                    <img class="rounded-circle profile-pic" src="{{user.profile.image.url}}" alt="">
+                    <img class="rounded-circle profile-pic" src="{{user.profile.image.url}}" style="height: 150px; width: 150px;" alt="">
                 </div>
                 <h3>{{user.username}}</h3>
                 <p>{{user.email}}</p>
@@ -22,7 +25,7 @@
                     {% csrf_token %} {{ u_form|crispy }} {{ p_form|crispy }}
 
                     <div>
-                        <button class="btn btn-outline-success" type="submit">update</button>
+                        <button class="btn btn-outline-success m-3" type="submit">update</button>
                     </div>
                 </form>
 

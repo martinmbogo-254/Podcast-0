@@ -6,40 +6,7 @@
     {% block content %}
     <div class="row">
         <div class="col-md-2">
-            <main>
-                <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse">
-                    <div class="position-sticky pt-3">
-                      <nav>
-                        <div class="d-flex flex-column flex-shrink-1 text-black  p-2 position-sticky collapse" id="sidebar" style="width: 280px;">
-                            <a href="/" class="d-flex align-items-center  mb-md-0 me-md-auto text-dark text-decoration-none">
-              
-                                <h4 class="fs-4 mt-3 m-2 p-2 text-center text-info">PODCAST</h4>
-                            </a>
-                          
-                            <ul class="nav nav-pills flex-column mb-auto text-dark p-3 m-1">
-                                <li class="nav-item">
-                                    <a href="{% url 'home'%}" class="nav-link  text-black" aria-current="page">
-                                        <i class="fa-solid fa-house"></i> Home
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="{% url 'episodes' %}" class="nav-link text-black"><i class="fa-solid fa-headphones-simple"></i> Explore
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="/admin" class="nav-link text-black"><i class="fa-solid fa-fire-flame-curved"></i> Popular</a>
-                                </li>
-                                <li>
-                                    <a href="{% url 'favorites' %}" class="nav-link text-black"><i class="fa-brands fa-gratipay"></i> Favorites</a>
-                                </li>
-                                <li>
-                                    <a href="#" class="nav-link text-black"><i class="fa-solid fa-id-card-clip"></i> profile
-                                    </a>
-                                </li>
-                            </ul>
-                        </div>
-                    </nav>
-                    </main>
+            {% include 'podcast/sidebar.html' %}
         </div>
   
 
@@ -108,7 +75,7 @@
                             <a href=" {% url 'rate' episode.id%}" class="btn btn-info p-2 m-2 text-center" data-toggle="tooltip" data-placement="top" title="leave your comments & rating.">
                                 Leave feedback
                             </a>
-                            <div class="p-2 m-2">
+                <div class="p-2 m-2">
                                 <p>Rated: {{average_ratings.rate__avg|floatformat}}/5</p>
                                 <p>{{total_ratings}} Reviews</p>
                             </div>
@@ -123,6 +90,10 @@
                                  {{rating.user}} </span>
                                         <span class="ml-5"><i class="fa fa-comments" aria-hidden="true"></i>
                                         </span>
+                                    <span class="ml-3 ml-5">
+                                        </span> {% if request.user == rating.user%}
+                        <a href="{% url 'comment-delete' rating.id%}"><i class="fa-solid fa-trash-can text-danger"></i></a> {% endif%}
+                                    </span>
                                         <div class=" container text-justify ">
                                             {{rating.comment|title}} <br>Rated : {{rating.rate}}/5  <i class="fa-solid fa-star text-warning"></i>
                                         </div>
@@ -132,7 +103,7 @@
                             </div>
                             {% empty%}
                             <div class="text-center m-2 p-2">
-                                <p>No ratings for this Mover's page Yet !!!.</p>
+                                <p>No ratings for this Episode Yet !!!.</p>
                     
                             </div>
                             {% endfor%}

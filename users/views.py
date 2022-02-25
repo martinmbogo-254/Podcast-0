@@ -25,7 +25,7 @@ def register(request):
         return render(request, 'users/register.html', context)
 
 
-@login_required
+@login_required(login_url='login')
 def profile(request):
     if request.method == 'POST':
         #show the current user details

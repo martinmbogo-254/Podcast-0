@@ -1,0 +1,23 @@
+{% extends 'podcast/base.html'%} {% block content%}
+<body>
+<div class="row">
+    <div class="col-md-2">
+{% include 'podcast/sidebar.html' %}
+    </div>
+    <div class="col-md-8 mt-4 p-2">
+
+<div class="container">
+    <div class="card shadow m-3 alert alert-danger rounded">
+        <p>Are you sure you want to delete '{{rating.comment}}'</p>
+        <form action="" method="POST">
+            {% csrf_token %}
+            <button type="submit" class="btn btn-danger">Yes, i'm sure</button>
+            <a href="{% url 'detail' rating.episode.id%}" class="btn btn-secondary">No take me back</a>
+
+        </form>
+    </div>
+</div>
+    </div>
+</div>
+</body>
+{% endblock content%}

@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.db.models import Avg
 from .models import Category, Episode, Rating
@@ -9,18 +9,19 @@ from django.contrib.auth.decorators import login_required
 
 
 # Create your views here.
+
 def home(request):
     recent_episodes = Episode.objects.filter().order_by('-posted')[:3]
-    categories= Category.objects.all()
-    context={
+    categories = Category.objects.all()
+    context = {
         'categories': categories,
-        'recent_episodes':recent_episodes
+        'recent_episodes': recent_episodes
     }
     return render(request, 'podcast/home.html', context)
 
+
 def explore(request):
-    
-    q = request.GET.get('q') if request.GET.get('q') !=None else ''
+    q = request.GET.get('q') if request.GET.get('q') != None else ''
     episodes = Episode.objects.filter(title__icontains=q)
     page = request.GET.get('page', 1)
 
@@ -28,17 +29,25 @@ def explore(request):
     try:
         episodes = paginator.page(page)
     except PageNotAnInteger:
-        episodes= paginator.page(1)
+        episodes = paginator.page(1)
     except EmptyPage:
         episodes = paginator.page(paginator.num_pages)
 
-
-
-    context={
+    context = {
         'episodes': episodes,
-        
+
     }
-    return render(request,'podcast/explore.html',context)
+    return render(request, 'podcast/explore.html', context)
+
+
+def Categories(request):
+    categories = Category.objects.all()
+    context = {
+        'categories': categories,
+
+    }
+    return render(request, 'podcast/categories.html', context)
+
 
 def EpisodeDetail(request, pk):
     episode = Episode.objects.get(id=pk)
@@ -53,16 +62,17 @@ def EpisodeDetail(request, pk):
         'average_ratings': average_ratings,
         'ratings': ratings,
         'total_ratings': total_ratings,
-        'fav':fav,
+        'fav': fav,
     }
     return render(request, 'podcast/episode.html', context)
 
-@login_required
+
+@login_required(login_url='login')
 def Rate(request, pk):
     # getting post objects by their id
     episode = Episode.objects.get(id=pk)
     user = request.user
-   
+
     # form method
     if request.method == 'POST':
         form = RateForm(request.POST)
@@ -78,30 +88,39 @@ def Rate(request, pk):
     context = {
         'form': form,
         'episode': episode,
-       
+
     }
     return render(request, 'podcast/rate.html', context)
 
-@login_required
 
+@login_required(login_url='login')
 def favorites(request):
     user = request.user
-    favorites= Episode.objects.filter(favorite=user)
+    favorites = Episode.objects.filter(favorite=user)
     fav_episodes = Episode.objects.filter(favorite=user).count()
-    context={
-        'favorites':favorites,
+    context = {
+        'favorites': favorites,
         'fav_episodes': fav_episodes
     }
-    return render(request,'podcast/favorites.html',context)
+    return render(request, 'podcast/favorites.html', context)
 
 
-@login_required
-
-def addToFavorites(request,pk):
+@login_required(login_url='login')
+def addToFavorites(request, pk):
     episode = Episode.objects.get(id=pk)
     if episode.favorite.filter(id=request.user.id).exists():
         episode.favorite.remove(request.user)
     else:
         episode.favorite.add(request.user)
     return HttpResponseRedirect(request.META['HTTP_REFERER'])
-    
+
+
+def ratingDelete(request, pk):
+    rating = Rating.objects.get(id=pk)
+    if request.method == 'POST':
+        rating.delete()
+        return redirect('home')
+    context = {
+        'rating': rating,
+    }
+    return render(request, 'podcast/delete.html', context)

@@ -9,8 +9,9 @@
 
 <body>
     {% block content %}
-    <div class="container container text-center">
-        <div class="card p-3 ">
+    <div class="container row container text-center">
+        <div class="col-md-4"></div>
+        <div class="card p-3 col-md-4 mt-4 jumbotron">
             <h3>Login</h3>
             <form action="" method="POST">
                 {% csrf_token %} {{ form.as_p }}
@@ -26,7 +27,7 @@
             </div>
 
         </div>
-
+    <div class="col-md-4"></div>
     </div>
     {% endblock content %}
 </body>

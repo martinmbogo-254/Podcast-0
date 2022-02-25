@@ -1,48 +1,8 @@
 {% extends 'podcast/base.html' %} {% block content %}
 <div class="row">
     <div class="col-md-2">
-        <main>
-            <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse">
-                <div class="position-sticky pt-3">
-                    <nav>
-                        <div class="d-flex flex-column flex-shrink-1 text-black  p-2 position-sticky collapse"
-                            id="sidebar" style="width: 280px;">
-                            <a href="/"
-                                class="d-flex align-items-center  mb-md-0 me-md-auto text-dark text-decoration-none">
+        {% include 'podcast/sidebar.html' %}
 
-                                <h4 class="fs-4 mt-3 m-2 p-2 text-center text-info">PODCAST</h4>
-                            </a>
-
-                            <ul class="nav nav-pills flex-column mb-auto text-dark p-3 m-1">
-                                <li class="nav-item">
-                                    <a href="{% url 'home'%}" class="nav-link  text-black" aria-current="page">
-                                        <i class="fa-solid fa-house"></i> Home
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="{% url 'episodes'%}" class="nav-link text-black"><i
-                                            class="fa-solid fa-headphones-simple"></i> Explore
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="/admin" class="nav-link text-black"><i
-                                            class="fa-solid fa-fire-flame-curved"></i> Popular</a>
-                                </li>
-                                <li>
-                                    <a href="{% url 'favorites' %}" class="nav-link text-black"><i
-                                            class="fa-brands fa-gratipay"></i> Favorites</a>
-                                </li>
-                                <li>
-                                    <a href="#" class="nav-link text-black"><i class="fa-solid fa-id-card-clip"></i>
-                                        profile
-                                    </a>
-                                </li>
-                            </ul>
-                        </div>
-                    </nav>
-                </div>
-                </nav>
-        </main>
     </div>
 
     <div class="col-md-9 m-2 mt-5">
@@ -61,7 +21,7 @@
        
     </div>
         <a href="{% url 'episodes'%}" class="btn btn-dark m-3">add more favorites</a> 
-        <div class="row">
+        <div class="row container">
         {% for episode in favorites %}
             <div class="col-md-3">
              
@@ -69,7 +29,7 @@
                     <img src="{{ episode.thumbnail.url }}" style="height:150px; width:200px; border-radius: 20px;" >
                 </div>
                 <p> <a class="nav-link" href="{% url 'detail' episode.id %}">{{ episode.title_snippet}} ...</a></p>
-                <a href="{% url 'addtofavorites' episode.id %}" class="m-2 ml-5 p-2 btn btn-danger text-center"><i class="fa-solid fa-xmark"></i></a>
+                <a href="{% url 'addtofavorites' episode.id %}" class="m-2 ml-5 p-2 btn btn-danger text-center"><i class="fa-solid fa-xmark"></i> remove episode</a>
             </div>
             {% empty %}
             <div class="alert alert-danger m-3  ml-5 mr-5 p-2 container text-center">
