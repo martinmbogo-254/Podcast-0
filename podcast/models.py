@@ -68,4 +68,4 @@ class Rating(models.Model):
     posted = models.DateTimeField(auto_now_add=True, null=True)
 
     def get_absolute_url(self):
-        return reverse('rating', kwargs={'pk': self.pk})
+        return reverse('datail', kwargs={'pk': self.pk})

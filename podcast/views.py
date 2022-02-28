@@ -1,3 +1,6 @@
+from multiprocessing import context
+
+from django.contrib import messages
 from django.shortcuts import render, redirect
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.db.models import Avg
@@ -6,6 +9,7 @@ from django.urls import reverse
 from django.http.response import HttpResponseRedirect
 from .forms import RateForm
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 
 
 # Create your views here.
@@ -124,3 +128,19 @@ def ratingDelete(request, pk):
         'rating': rating,
     }
     return render(request, 'podcast/delete.html', context)
+
+
+def ratingUpdate(request, pk):
+    rating = Rating.objects.get(id=pk)
+    form = RateForm(instance=rating)
+    if request.method == "POST":
+        form = RateForm(request.POST, instance=rating)
+        if form.is_valid():
+            form.save()
+            comment = form.cleaned_data.get('comment')
+            messages.success(request, f'comment successfully updated !!')
+            return redirect('home')
+    context = {
+        'form': form
+    }
+    return render(request, 'podcast/rateupdate.html', context)

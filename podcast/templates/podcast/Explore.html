@@ -12,7 +12,7 @@
 
 
         <div class="col-md-9 mt-5   p-1">
-            <div class="row mt-2 m-3">
+            <div class="row mt-2 m-3 ">
                 <div class="col-md-5">
                     <h4>All Episodes.</h4>
                 </div>
@@ -24,14 +24,14 @@
                 </div>
             </div>
             <div class="row">
-                
+
                 <div class="col-md-8">
-                   
+
                     <div>
-                       
+
                     </div>
                     {% for episode in episodes %}
-                    
+
                     <div class="row p-2 m-2">
                         <div class="col-md-3">
                             <img src="{{ episode.thumbnail.url }}" style=" height: 120px;
@@ -54,9 +54,9 @@
     <p class="text-danger">Sorry. No available episodes !!!</p>
 </div>
                                 {% endfor %}
-                                
+
             <div class= "d-flex justify-content-center text-center pagination">
-            
+
                 {% if episodes.has_other_pages %}
                 <ul class="pagination">
                     {% if episodes.has_previous %}
@@ -82,7 +82,8 @@
 <p class="p-2 m-2">The all talk podcast. We talk on the things that are hardly talked about.</p>
                 </div>
             </div>
-           
+            <!-- <button  onclick="topFunction()" id="" title="Go to top">Top</button> -->
+
         </div>
     </div>
     {% endblock content%}

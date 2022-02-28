@@ -3,10 +3,10 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="shortcut icon" href="{% static 'podcast/favicon.ico' %}" type="image/x-icon" />
+    <link rel="shortcut icon" href="https://thumbs.dreamstime.com/b/microphone-icon-fashionable-flat-style-isolated-against-background-logo-application-user-interface-podcast-radio-148364309.jpg" type="image/jpg" style="border-radius:10px;" />
 
     <title>SHE-HUDRAY PODCAST</title>
-    
+
     <link rel="stylesheet" href="{% static 'podcast/styles.css' %} ">
     <link rel="stylesheet" href="{% static 'podcast/dashboard.css' %}">
     <link rel="stylesheet" href="{% static 'podcast/bootstrap.min.css' %}">
@@ -17,38 +17,49 @@
 
 </head>
 
-<header class="navbar navbar-dark sticky-top p-2 bg-black text-light flex-md-nowrap p-0 shadow">
-    <a class="navbar-brand text-center ml-5 text-center" href="{% url 'home'%}"> <i class="fa-solid fa-headphones-simple " style="font-size: 20px;"></i>  SHE-HUDRAY PODCAST</a>
-    <button class="navbar-toggler position-absolute d-md-none collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="">
+<header class="navbar navbar-dark sticky-top p-2 bg-black text-light flex-md-nowrap p-0 shadow row">
+  <a class="navbar-brand text-center ml-5 text-center" href="{% url 'home'%}"> <i class="fa-solid fa-headphones-simple " style="font-size: 20px;"></i>  SHE-HUDRAY PODCAST</a>
+  <button class="navbar-toggler position-absolute d-md-none collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+    <div class="col-md-9">
+
       <ul class="navbar-nav">
           {% if user.is_authenticated %}
           <div class="row text-center">
-              <div class="col-md-4">   <a class="nav-link" href="/profile ">{{user.username|upper}}</a></div>
-              <div class="col-md-4 ml-2 mr-1"><a class="nav-link " href="/logout ">LOGOUT</a></div>
+              <div class="col-md-4">   <a class="nav-link d-flex justify-content-end" href="/profile ">Hello ,{{user.username|upper}}</a></div>
+              <div class="col-md-2 ml-2 mr-1"><a class="nav-link d-flex justify-content-end " href="/logout ">LOGOUT</a></div>
           </div>
 
           {%else %}
           <div class="navbar-nav ">
-              <a class="nav-link ml-auto " href="{% url 'login' %} ">Login</a>
-              <a class="nav-link ml-auto " href="/register ">Register</a>
+              <a class="nav-link ml-auto  MR-5" href="{% url 'login' %} ">LOGIN</a>
               {% endif %}
+          </div>
 
       </ul>
 
     </div>
+    <div class="col-md-3">
+
     </div>
+
   </header>
   <body>
+    <div class="container text-center mt-5 ml-5 ml-5 ">
+      {% if messages%} {% for message in messages%}
+      <div class="alert alert-{{ message.tags}} ">
+          {{ message}}
+      </div>
+      {% endfor %} {% endif %}
+  </div>
       <div class="container-fluid">
           {% block content%}
-          
+
           {% endblock content%}
       </div>
-      
 
+         <script src="{% static 'podcast/index.js' %}"></script>
          <script src="{% static 'podcast/bootstrap.min.js' %}"></script>
          <script src="{% static 'podcast/dashboard.js' %}"></script>
          <script src="{% static 'podcast/sidebars.js' %}"></script>

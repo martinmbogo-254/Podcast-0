@@ -10,18 +10,16 @@
             {% include 'podcast/sidebar.html' %}
                    </div>
   <div class="col-md-8 mt-2 p-3 m-3">
-      <h4 class="fw-bold text-center">FEEDBACK</h4>
+      <h4 class="fw-bold text-center">Comment Update</h4>
       <div class="jumbotron-fluid jumbotron rounded shadow">
 
-            <a class="btn btn-dark m-2 ml-5" href="{% url 'detail' episode.id%}">Back</a>
+            <a class="btn btn-dark m-2 ml-5" href="">Back</a>
 
         <div class="row">
 
-            <div class="col-md-6 container">
-                <img class="rounded" src="{{episode.thumbnail.url}}" style="height:320px" width="100%" alt="">
+            <div class="col-md-2 container">
             </div>
-            <div class="col-md-5 container-fluid">
-                <h4>{{ episode.title }}</h4>
+            <div class="col-md-6 container-fluid">
                 <div class="card text-center p-2 bg-light rounded shadow m-3">
 
                 <div class="text-justify p-2 m-2 rounded m-3">
@@ -38,6 +36,7 @@
                 </div>
       </div>
   </div>
+          <div class="col-md-3"></div>
 
 
     </div>
