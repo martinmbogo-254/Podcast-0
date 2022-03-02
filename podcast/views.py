@@ -8,6 +8,7 @@ from .models import Category, Episode, Rating
 from django.urls import reverse
 from django.http.response import HttpResponseRedirect
 from .forms import RateForm
+from django.db.models import Q
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 
@@ -26,7 +27,15 @@ def home(request):
 
 def explore(request):
     q = request.GET.get('q') if request.GET.get('q') != None else ''
-    episodes = Episode.objects.filter(title__icontains=q)
+    
+    episodes = Episode.objects.filter(
+        Q(title__icontains=q) |
+        Q(category__name__icontains=q) |
+        Q(desc__icontains=q)
+    )
+    no_episodes = episodes.count()
+
+    categories = Category.objects.all()
     page = request.GET.get('page', 1)
 
     paginator = Paginator(episodes, 4)
@@ -39,18 +48,13 @@ def explore(request):
 
     context = {
         'episodes': episodes,
+        'categories' :categories,
+        'no_episodes':no_episodes
 
     }
     return render(request, 'podcast/explore.html', context)
 
 
-def Categories(request):
-    categories = Category.objects.all()
-    context = {
-        'categories': categories,
-
-    }
-    return render(request, 'podcast/categories.html', context)
 
 
 def EpisodeDetail(request, pk):

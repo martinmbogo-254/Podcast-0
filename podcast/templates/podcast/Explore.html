@@ -26,7 +26,7 @@
             <div class="row">
 
                 <div class="col-md-8">
-
+            <p class="text-center ">{{ no_episodes }} Episodes.</p>
                     <div>
 
                     </div>
@@ -43,8 +43,9 @@
                             <a class="nav-link  " href="{% url 'detail' episode.id %}">
                                 <h6>{{episode.title}}</h6>
                             </a>
-                            <p class="ml-4">Hello there and welcome to our very fir.....</p>
-                            <p class="ml-4"><small>Posted: 10 mins ago</small></p>
+                            <p class="ml-4">{{ episode.desc_snippet }} ...</p>
+                            <p class="ml-4"><small>Posted: {{ episode.posted|timesince }} ago.</small></p>
+                            <p><span class="badge badge-pill badge-info  p-2">{{episode.category.name}} </span></p>
                         </div>
                     </div>
                     <hr class="fw-bold">
@@ -78,8 +79,21 @@
             </div>
                 </div>
                 <div class="col-md-4">
-                    <h4>About</h4>
+                    <h4 class="text-center" >About</h4>
 <p class="p-2 m-2">The all talk podcast. We talk on the things that are hardly talked about.</p>
+<div class="categories">
+    <h4 class=" text-info p-3">Categories</h4>
+    <div class="row text-center categories d-flex justify-content-between">
+        {% for category in categories%}
+        <div class="col-md-6">
+            <a class="nav-link text-black" href="{% url 'episodes' %}?q={{category.name}}"><p> {{category.name}}</p> 
+            <img class="rounded" src="{{category.thumbnail.url}}" style="height:90px; width: 100px;" alt="img">
+        </a>
+        </div>
+       {%endfor%}
+    </div>
+    
+</div>
                 </div>
             </div>
             <!-- <button  onclick="topFunction()" id="" title="Go to top">Top</button> -->

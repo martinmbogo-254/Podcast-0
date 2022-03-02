@@ -27,13 +27,13 @@
       <ul class="navbar-nav">
           {% if user.is_authenticated %}
           <div class="row text-center">
-              <div class="col-md-4">   <a class="nav-link d-flex justify-content-end" href="/profile ">Hello ,{{user.username|upper}}</a></div>
-              <div class="col-md-2 ml-2 mr-1"><a class="nav-link d-flex justify-content-end " href="/logout ">LOGOUT</a></div>
+              <div class="col-md-4">   <a class="nav-link d-flex justify-content-end" href="/profile ">{{user.username}}'s Profile</a></div>
+              <div class="col-md-2 ml-2 mr-1"><a class="nav-link d-flex justify-content-end " href="/logout ">Logout</a></div>
           </div>
 
           {%else %}
           <div class="navbar-nav ">
-              <a class="nav-link ml-auto  MR-5" href="{% url 'login' %} ">LOGIN</a>
+              <a class="nav-link ml-auto  MR-5" href="{% url 'login' %} ">Login</a>
               {% endif %}
           </div>
 

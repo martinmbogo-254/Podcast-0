@@ -17,10 +17,11 @@
         <h2 class="text-info">Your Episodes</h2>
         <h6 class="fw-bold m-2 p-2">{{request.user|upper}}</h6>
          <p class="m-2 p-1">{{fav_episodes}} Favorite Episodes</p>
+         <a href="{% url 'episodes'%}" class="btn btn-dark m-3">Add to Favorites</a> 
+
      </div>
        
     </div>
-        <a href="{% url 'episodes'%}" class="btn btn-dark m-3">add more favorites</a> 
         <div class="row container">
         {% for episode in favorites %}
             <div class="col-md-3">
