@@ -43,7 +43,7 @@ def explore(request):
         episodes = paginator.page(page)
     except PageNotAnInteger:
         episodes = paginator.page(1)
-    except EmptyPage:
+    except EmptyPage:                                                       
         episodes = paginator.page(paginator.num_pages)
 
     context = {
