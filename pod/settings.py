@@ -12,7 +12,11 @@ https://docs.djangoproject.com/en/4.0/ref/settings/
 
 from pathlib import Path
 import os
+import django_heroku 
 
+
+# UPDATE secret key
+SECRET_KEY = os.environ['SECRET_KEY']
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -26,7 +30,7 @@ SECRET_KEY = 'django-insecure-l&_4)s$6!1*bob)wtg_h1b$w8!qm+va+ra18ilwf)zc1kkfok%
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -141,3 +145,7 @@ MEDIA_URL = '/media/'
 LOGIN_REDIRECT_URL = 'home'
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
+
+django_heroku.settings(locals())
+
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
