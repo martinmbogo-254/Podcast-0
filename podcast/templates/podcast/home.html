@@ -54,15 +54,7 @@
                 </div>
             </div>
             <div class="col-md-3 mt-2 p-2 rounded-top">
-                <h4 class=" text-info p-3">Categories</h4>
-                <div class="row text-center categories d-flex justify-content-between">
-                    {% for category in categories%}
-                    <div class="col-md-6">
-                       <a href="{% url 'home' %}?q={{category.name}}"><p>{{category.name}}</p></a> 
-                        <img class="rounded" src="{{category.thumbnail.url}}" style="height:90px; width: 100px;" alt="img">
-                    </div>
-                   {%endfor%}
-                </div>
+               <h4 class="text-info text-center">Ads</h4>
             </div>
         </div>
     
