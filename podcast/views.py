@@ -52,7 +52,7 @@ def explore(request):
         'no_episodes':no_episodes
 
     }
-    return render(request, 'podcast/explore.html', context)
+    return render(request, 'podcast/Explore.html', context)
 
 
 
