@@ -1,5 +1,7 @@
 body {
     font-family: 'roboto', sans-serif;
+    margin: 0;
+    padding: 0;
 }
 .bg-black {
     background-color: black;
@@ -96,4 +98,6 @@ hr{
     color: black;
     
 }
-
+#carousel img{
+    height: 300px;
+}

@@ -11,16 +11,22 @@ from .forms import RateForm
 from django.db.models import Q
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
+import requests
 
-
+API_KEY = '18b4a29dedd7428b9451cdefe14d99d2'
 # Create your views here.
 
 def home(request):
+    # url = 'https://www.standardmedia.co.ke'
+    # response = requests.get(url)
+    # data = response.json()
+    # articles = data['articles']
     recent_episodes = Episode.objects.filter().order_by('-posted')[:3]
     categories = Category.objects.all()
     context = {
         'categories': categories,
-        'recent_episodes': recent_episodes
+        'recent_episodes': recent_episodes,
+        # 'articles':articles ,
     }
     return render(request, 'podcast/home.html', context)
 
@@ -49,7 +55,7 @@ def explore(request):
     context = {
         'episodes': episodes,
         'categories' :categories,
-        'no_episodes':no_episodes
+        'no_episodes':no_episodes,
 
     }
     return render(request, 'podcast/Explore.html', context)
